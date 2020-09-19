@@ -1,2 +1,4 @@
-# curso-angular
-Curso de Angular do portal de treinamento loiane.training
+# Curso de Angular
+
+Repositório com todos os módulos do curso de Angular do portal da loiane.training.
+
