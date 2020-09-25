@@ -13,12 +13,15 @@ const appRoutes: Routes = [
     { //lazy loading
         path: 'cursos', 
         loadChildren: () => import('./cursos/cursos.module').then(mod => mod.CursosModule),
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
+        canActivateChild: [CursosGuard],
+        canLoad: [AuthGuard]
     }, 
     { //lazy loading
         path: 'aluno', 
         loadChildren: () => import('./aluno/aluno.module').then(mod => mod.AlunoModule),
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
+        canLoad: [AuthGuard]
     }, 
     { path: '', component: HomeComponent, canActivate: [AuthGuard] },
     { path: 'login', component: LoginComponent }
