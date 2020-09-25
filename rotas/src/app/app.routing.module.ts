@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule, Route, Router } from '@angular/router';
 import { ModuleWithProviders } from '@angular/core';
 
+import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada/pagina-nao-encontrada.component';
 import { CursosGuard } from './guard/cursos.guard';
 import { AuthGuard } from './guard/auth.guard';
 import { CursosRoutingModule } from './cursos/cursos.routing.module';
@@ -23,13 +24,15 @@ const appRoutes: Routes = [
         canActivate: [AuthGuard],
         canLoad: [AuthGuard]
     }, 
-    { path: '', component: HomeComponent, canActivate: [AuthGuard] },
-    { path: 'login', component: LoginComponent }
+    { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+    { path: 'login', component: LoginComponent },
+    { path: '', redirectTo: '/home', pathMatch: 'full'},
+    { path: "**", component: PaginaNaoEncontradaComponent}
 ];
 
 @NgModule({
     imports: [
-        RouterModule.forRoot(appRoutes)
+        RouterModule.forRoot(appRoutes, {useHash: true})
     ],
     exports: [RouterModule]
 })
